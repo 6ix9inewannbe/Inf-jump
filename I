@@ -1,0 +1,16 @@
+local player = game.Players.LocalPlayer
+local userInputService = game:GetService("UserInputService")
+
+-- Function to handle jumping
+local function onJumpRequest()
+    player.Character:FindFirstChildOfClass("Humanoid"):ChangeState("Jumping")
+end
+
+-- Bind the jump function to a key or event
+userInputService.InputBegan:Connect(function(input, processed)
+    if not processed then
+        if input.KeyCode == Enum.KeyCode.Space then
+            onJumpRequest()
+        end
+    end
+end)
